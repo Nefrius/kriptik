@@ -4,6 +4,13 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { User, Session } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase'
 
+// Supabase bağlantısının geçerli olup olmadığını kontrol et
+const isSupabaseConfigured = () => {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  return url && key && url !== 'https://placeholder.supabase.co' && key !== 'placeholder-key'
+}
+
 // Database Types
 export interface Profile {
   id: string
@@ -40,6 +47,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Kullanıcı profilini getir
   const fetchProfile = async (userId: string) => {
+    if (!isSupabaseConfigured()) return
+    
     try {
       const { data, error } = await supabase
         .from('profiles')
@@ -62,6 +71,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Profil oluştur
   const createProfile = async (user: User, username: string, fullName?: string) => {
+    if (!isSupabaseConfigured()) return
+    
     try {
       const { data, error } = await supabase
         .from('profiles')
@@ -92,6 +103,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Kayıt ol
   const signUp = async (email: string, password: string, username: string, fullName?: string) => {
+    if (!isSupabaseConfigured()) {
+      return { error: 'Supabase yapılandırması eksik. Lütfen environment variables ayarlayın.' }
+    }
+    
     try {
       // Kullanıcı adının benzersiz olup olmadığını kontrol et
       const { data: existingProfile } = await supabase
@@ -135,6 +150,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Giriş yap
   const signIn = async (email: string, password: string) => {
+    if (!isSupabaseConfigured()) {
+      return { error: 'Supabase yapılandırması eksik. Lütfen environment variables ayarlayın.' }
+    }
+    
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email,
@@ -160,6 +179,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Çıkış yap
   const signOut = async () => {
+    if (!isSupabaseConfigured()) return
+    
     try {
       const { error } = await supabase.auth.signOut()
       if (error) throw error
@@ -173,6 +194,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Şifre sıfırlama
   const resetPassword = async (email: string) => {
+    if (!isSupabaseConfigured()) {
+      return { error: 'Supabase yapılandırması eksik. Lütfen environment variables ayarlayın.' }
+    }
+    
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/auth/reset-password`
@@ -191,7 +216,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Profil güncelle
   const updateProfile = async (updates: Partial<Profile>) => {
-    if (!user) return
+    if (!user || !isSupabaseConfigured()) return
 
     try {
       const { data, error } = await supabase
@@ -213,6 +238,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Auth state değişikliklerini dinle
   useEffect(() => {
+    if (!isSupabaseConfigured()) {
+      setLoading(false)
+      return
+    }
+    
     const getSession = async () => {
       const { data: { session } } = await supabase.auth.getSession()
       setSession(session)

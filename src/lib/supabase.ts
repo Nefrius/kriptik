@@ -1,7 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Environment variables kontrolü
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+
+// Production build sırasında uyarı ver
+if (process.env.NODE_ENV === 'production' && supabaseUrl === 'https://placeholder.supabase.co') {
+  console.warn('⚠️ UYARI: Supabase URL tanımlanmamış. Lütfen environment variables ayarlayın.')
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
