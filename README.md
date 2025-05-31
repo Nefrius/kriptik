@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kriptik - Şifreleme Öğreten İnteraktif Web Sitesi
 
-## Getting Started
+Kriptik, klasik şifreleme algoritmalarını interaktif bir şekilde öğreten eğitim amaçlı bir web platformudur. Bu proje, TÜBİTAK yarışmaları için hazırlanmıştır.
 
-First, run the development server:
+## Proje Özellikleri
+
+- Caesar, Vigenère, Substitution gibi klasik şifreleme algoritmalarının interaktif demoları
+- Her algoritmanın adım adım görselleştirilmesi
+- Şifreleme ve şifre çözme süreçlerinin canlı simülasyonu
+- Şifre kırma tekniklerinin detaylı açıklamaları ve gösterimleri
+- Tarihsel bağlam ve algoritmalar hakkında ilgi çekici bilgiler
+- Tamamen Türkçe içerik
+
+## Kurulum
+
+Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
+
+1. Bu repository'yi klonlayın:
+
+```bash
+git clone https://github.com/kullanici/kriptik.git
+cd kriptik
+```
+
+2. Gerekli bağımlılıkları yükleyin:
+
+```bash
+npm install
+```
+
+3. Geliştirme sunucusunu başlatın:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresine giderek uygulamayı görüntüleyin.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Teknolojiler
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Bu proje aşağıdaki teknolojileri kullanmaktadır:
 
-## Learn More
+- **Next.js** - React framework
+- **TypeScript** - Tip güvenliği
+- **Tailwind CSS** - Stil ve tasarım
+- **React Hooks** - İnteraktif komponentler için durum yönetimi
 
-To learn more about Next.js, take a look at the following resources:
+## Katkıda Bulunma
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Bu repository'yi fork edin
+2. Feature branch'inizi oluşturun (`git checkout -b feature/amazing-feature`)
+3. Değişikliklerinizi commit edin (`git commit -m 'Add some amazing feature'`)
+4. Branch'inize push edin (`git push origin feature/amazing-feature`)
+5. Pull Request açın
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Lisans
 
-## Deploy on Vercel
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için `LICENSE` dosyasını inceleyebilirsiniz.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## İletişim
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Proje hakkında soru ve önerileriniz için:
+
+- E-posta: [info@kriptik.edu.tr](mailto:info@kriptik.edu.tr)
+
+---
+
+© 2025 Kriptik Projesi - Tüm hakları saklıdır.
