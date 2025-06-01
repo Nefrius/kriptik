@@ -18,6 +18,7 @@ export default function Header({ currentPath }: HeaderProps) {
   const navigation = [
     { name: "Ana Sayfa", href: "/", path: "/" },
     { name: "Algoritmalar", href: "/algoritmalar", path: "/algoritmalar" },
+    { name: "Yarışma", href: "/yarisma", path: "/yarisma" },
     { name: "Üyeler", href: "/uyeler", path: "/uyeler" },
     { name: "Hakkında", href: "/hakkinda", path: "/hakkinda" },
   ];
