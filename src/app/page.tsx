@@ -6,296 +6,623 @@ import { useState } from "react";
 import PageTransition from "@/components/ui/page-transition";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
+import { 
+  Shield, 
+  Key, 
+  BookOpen, 
+  Zap, 
+  Target, 
+  Globe, 
+  Crown, 
+  Wrench, 
+  History, 
+  ArrowRight, 
+  Lock, 
+  Code2, 
+  Brain, 
+  Sparkles,
+  Play,
+  ChevronDown,
+  MousePointer2,
+  Rocket,
+  Trophy,
+  Star,
+  Users,
+  TrendingUp,
+  CheckCircle
+} from "lucide-react";
 
 export default function Home() {
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+  const [hoveredAlgorithm, setHoveredAlgorithm] = useState<number | null>(null);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
 
   return (
     <PageTransition>
       <div className="min-h-screen flex flex-col bg-white">
         <Header currentPath="/" />
 
-        {/* Hero Section */}
-        <section className="bg-primary-500 py-20 px-4 md:px-8 relative overflow-hidden">
-          {/* Background effects */}
-          <div className="absolute inset-0 bg-[#38B6FF] z-0"></div>
+        {/* Enhanced Hero Section */}
+        <section className="bg-gradient-to-br from-[#38B6FF] via-[#0EA5E9] to-[#0284C7] py-20 px-4 md:px-8 relative overflow-hidden">
+          {/* Dynamic Background Effects */}
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-            <div className="absolute top-40 right-20 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
-            <div className="absolute bottom-20 left-1/3 w-24 h-24 bg-white/15 rounded-full blur-lg"></div>
+            <motion.div 
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ 
+                duration: 20, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"
+            />
+            <motion.div 
+              animate={{ 
+                rotate: -360,
+                scale: [1.2, 1, 1.2]
+              }}
+              transition={{ 
+                duration: 25, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="absolute top-40 right-20 w-48 h-48 bg-white/5 rounded-full blur-2xl"
+            />
+            <motion.div 
+              animate={{ 
+                y: [-20, 20, -20],
+                x: [-10, 10, -10]
+              }}
+              transition={{ 
+                duration: 8, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute bottom-20 left-1/3 w-24 h-24 bg-white/15 rounded-full blur-lg"
+            />
+            
+            {/* Floating Icons */}
+            <motion.div
+              animate={{ 
+                y: [-15, 15, -15],
+                rotate: [0, 180, 360]
+              }}
+              transition={{ 
+                duration: 6, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute top-20 right-1/4 text-white/20"
+            >
+              <Lock className="w-8 h-8" />
+            </motion.div>
+            <motion.div
+              animate={{ 
+                y: [20, -20, 20],
+                rotate: [360, 180, 0]
+              }}
+              transition={{ 
+                duration: 7, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute bottom-32 right-1/4 text-white/20"
+            >
+              <Key className="w-6 h-6" />
+            </motion.div>
           </div>
           
-          <div className="container mx-auto max-w-5xl relative z-10">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-              <div className="md:w-1/2">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
+          <div className="container mx-auto max-w-6xl relative z-10">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+              <motion.div 
+                className="md:w-1/2"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <motion.div 
+                  variants={itemVariants}
+                  className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8"
                 >
-                  <motion.div 
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <Sparkles className="w-5 h-5 text-green-400 mr-3" />
+                  </motion.div>
+                  <span className="text-white text-sm font-medium">Tamamen Ücretsiz & Açık Kaynak</span>
+                </motion.div>
+                
+                <motion.h1 
+                  variants={itemVariants}
+                  className="text-5xl md:text-6xl font-bold mb-6 text-white"
+                >
+                  <motion.span 
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6"
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="block"
                   >
-                    <span className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                    <span className="text-white text-sm font-medium">Tamamen Ücretsiz</span>
+                    Kriptografiyi
+                  </motion.span>
+                  <motion.span 
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="block bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent"
+                  >
+                    Keşfet
+                  </motion.span>
+                </motion.h1>
+
+                <motion.p 
+                  variants={itemVariants}
+                  className="text-xl md:text-2xl mb-8 text-white/95 leading-relaxed"
+                >
+                  Klasik şifreleme algoritmalarını <strong>interaktif</strong> olarak öğrenin. 
+                  Tarihte kullanılan şifreleme yöntemlerini adım adım keşfedin ve 
+                  <strong> modern kriptografinin temellerini</strong> anlayın.
+                </motion.p>
+                
+                <motion.div 
+                  variants={itemVariants}
+                  className="flex flex-col sm:flex-row gap-4"
+                >
+                  <Link href="/algoritmalar" className="group relative">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="relative bg-white text-[#38B6FF] px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-300 inline-flex items-center group-hover:shadow-xl"
+                    >
+                      <Play className="w-5 h-5 mr-2" />
+                      Hemen Başla
+                      <motion.div
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </motion.div>
+                    </motion.div>
+                  </Link>
+                  
+                  <Link href="/hakkinda" className="group">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="relative border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all duration-300 inline-flex items-center backdrop-blur-sm"
+                    >
+                      <BookOpen className="w-5 h-5 mr-2" />
+                      Proje Hakkında
+                    </motion.div>
+                  </Link>
+                </motion.div>
+              </motion.div>
+              
+              <motion.div 
+                className="md:w-1/2 flex justify-center"
+                initial={{ opacity: 0, scale: 0.8, rotateY: 45 }}
+                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                transition={{ 
+                  duration: 1, 
+                  delay: 0.5,
+                  type: "spring",
+                  stiffness: 100
+                }}
+              >
+                <div className="relative">
+                  <motion.div 
+                    className="w-80 h-80 bg-white/10 backdrop-blur-sm p-8 rounded-3xl flex items-center justify-center shadow-2xl relative border border-white/20"
+                    whileHover={{ 
+                      scale: 1.05,
+                      rotateY: 5,
+                      rotateX: 5
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* Decorative elements */}
+                    <motion.div 
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                      className="absolute -top-4 -right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+                    >
+                      <Shield className="w-4 h-4 text-white" />
+                    </motion.div>
+                    <motion.div 
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                      className="absolute -bottom-4 -left-4 w-6 h-6 bg-white/30 rounded-full flex items-center justify-center"
+                    >
+                      <Key className="w-3 h-3 text-white" />
+                    </motion.div>
+                    
+                    <div className="text-center">
+                      <motion.div 
+                        animate={{ 
+                          opacity: [1, 0.7, 1],
+                        }}
+                        transition={{ 
+                          duration: 2, 
+                          repeat: Infinity, 
+                          repeatType: "reverse" 
+                        }}
+                        className="text-xl mb-6 font-mono tracking-wider text-white/90 bg-white/10 p-3 rounded-lg"
+                      >
+                        XBHIBCBOQIBO
+                      </motion.div>
+                      
+                      <motion.div 
+                        animate={{ 
+                          y: [0, -10, 0],
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          duration: 1.5, 
+                          repeat: Infinity, 
+                          repeatType: "reverse" 
+                        }}
+                        className="flex justify-center items-center mb-6"
+                      >
+                        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/30">
+                          <ChevronDown className="w-8 h-8 text-white" />
+                        </div>
+                      </motion.div>
+                      
+                      <motion.div 
+                        animate={{ 
+                          opacity: [0.7, 1, 0.7],
+                        }}
+                        transition={{ 
+                          duration: 2, 
+                          repeat: Infinity, 
+                          repeatType: "reverse",
+                          delay: 1
+                        }}
+                        className="text-xl font-mono tracking-wider text-white/90 bg-white/10 p-3 rounded-lg"
+                      >
+                        MERHABA DÜNYA
+                      </motion.div>
+                    </div>
                   </motion.div>
                   
-                  <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-                    <span className="block">Şifrelemeyi</span>
-                    <span className="block bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-                      Keşfet
-                    </span>
-                  </h1>
-                  <p className="text-lg md:text-xl mb-8 text-white/90 leading-relaxed">
-                    Kriptik ile klasik şifreleme algoritmalarını interaktif olarak öğrenin. 
-                    Tarihte kullanılan şifreleme yöntemlerini, nasıl çalıştıklarını ve 
-                    neden kırılabildiklerini adım adım keşfedin.
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link href="/algoritmalar" className="relative inline-flex group">
-                      <div className="absolute transition-all duration-300 inset-0 bg-white/20 blur-lg rounded-lg group-hover:blur-md"></div>
-                      <div className="relative bg-white text-[#38B6FF] px-6 py-3 rounded-lg font-medium text-lg hover:bg-gray-50 transition-colors inline-block">
-                        Hemen Başla
-                      </div>
-                    </Link>
-                    
-                    <Link href="/hakkinda" className="relative inline-flex group">
-                      <div className="relative border-2 border-white/50 text-white px-6 py-3 rounded-lg font-medium text-lg hover:bg-white/10 transition-colors inline-block">
-                        Proje Hakkında
-                      </div>
-                    </Link>
-                  </div>
-                </motion.div>
-              </div>
-              
-              <div className="md:w-1/2 flex justify-center">
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: 0.2,
-                    type: "spring",
-                    stiffness: 100
-                  }}
-                  className="w-72 h-72 bg-white/10 backdrop-blur-sm p-6 rounded-2xl flex items-center justify-center shadow-xl relative"
-                >
-                  {/* Decorative elements */}
-                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-white/20 rounded-full"></div>
-                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-white/30 rounded-full"></div>
-                  <div className="absolute top-2 left-2 w-4 h-4 bg-white/25 rounded-full"></div>
-                  
-                  <div className="text-center">
-                    <motion.div 
-                      animate={{ 
-                        opacity: [1, 0.7, 1],
+                  {/* Floating particles */}
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-2 h-2 bg-white/40 rounded-full"
+                      animate={{
+                        x: [0, Math.random() * 100 - 50],
+                        y: [0, Math.random() * 100 - 50],
+                        opacity: [0, 1, 0]
                       }}
-                      transition={{ 
-                        duration: 2, 
-                        repeat: Infinity, 
-                        repeatType: "reverse" 
+                      transition={{
+                        duration: 3 + Math.random() * 2,
+                        repeat: Infinity,
+                        delay: Math.random() * 2
                       }}
-                      className="text-xl mb-4 font-mono tracking-wider text-white"
-                    >
-                      XBHIBCBOQIBO...
-                    </motion.div>
-                    <motion.div 
-                      animate={{ 
-                        y: [0, -8, 0],
-                        scale: [1, 1.1, 1]
+                      style={{
+                        left: `${20 + Math.random() * 60}%`,
+                        top: `${20 + Math.random() * 60}%`
                       }}
-                      transition={{ 
-                        duration: 1.5, 
-                        repeat: Infinity, 
-                        repeatType: "reverse" 
-                      }}
-                      className="flex justify-center items-center mb-4"
-                    >
-                      <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-white">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
-                        </svg>
-                      </div>
-                    </motion.div>
-                    <motion.div 
-                      animate={{ 
-                        opacity: [0.7, 1, 0.7],
-                      }}
-                      transition={{ 
-                        duration: 2, 
-                        repeat: Infinity, 
-                        repeatType: "reverse",
-                        delay: 1
-                      }}
-                      className="text-xl font-mono tracking-wider text-white"
-                    >
-                      MERHABA DÜNYA...
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </div>
+                    />
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </div>
+          
+          {/* Scroll indicator */}
+          <motion.div 
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60"
+          >
+            <MousePointer2 className="w-6 h-6" />
+          </motion.div>
         </section>
 
-        {/* Statistics Section */}
-        <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-white">
+        {/* Enhanced Statistics Section */}
+        <section className="py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto max-w-6xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="text-center mb-12"
+              className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Platform İstatistikleri</h2>
-              <div className="h-1 w-24 bg-[#38B6FF] mx-auto rounded-full"></div>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Platform Özellikleri</h2>
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: 96 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="h-1 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] mx-auto rounded-full"
+              />
             </motion.div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { number: "30+", label: "Şifreleme Algoritması", icon: "🔐", delay: 0 },
-                { number: "8", label: "Farklı Kategori", icon: "📚", delay: 0.1 },
-                { number: "10+", label: "Interaktif Demo", icon: "🎮", delay: 0.2 },
-                { number: "100%", label: "Türkçe İçerik", icon: "🇹🇷", delay: 0.3 }
+                { number: "12+", label: "Şifreleme Algoritması", icon: Shield, delay: 0, color: "from-blue-500 to-blue-600" },
+                { number: "5", label: "Farklı Kategori", icon: Target, delay: 0.1, color: "from-green-500 to-green-600" },
+                { number: "∞", label: "Interaktif Demo", icon: Zap, delay: 0.2, color: "from-purple-500 to-purple-600" },
+                { number: "100%", label: "Türkçe İçerik", icon: Globe, delay: 0.3, color: "from-red-500 to-red-600" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: stat.delay }}
+                  initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.6, delay: stat.delay }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                  className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -10,
+                    transition: { duration: 0.2 }
+                  }}
+                  className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
                 >
-                  <div className="text-3xl mb-2">{stat.icon}</div>
-                  <div className="text-3xl font-bold text-[#38B6FF] mb-2">{stat.number}</div>
-                  <div className="text-gray-600 text-sm">{stat.label}</div>
+                  {/* Background gradient on hover */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 0.1 }}
+                    className={`absolute inset-0 bg-gradient-to-br ${stat.color}`}
+                  />
+                  
+                  <div className="relative z-10">
+                    <motion.div
+                      whileHover={{ rotate: 360, scale: 1.2 }}
+                      transition={{ duration: 0.6 }}
+                      className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stat.color} mb-4`}
+                    >
+                      <stat.icon className="w-8 h-8 text-white" />
+                    </motion.div>
+                    <motion.div 
+                      initial={{ scale: 1 }}
+                      whileInView={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 0.5, delay: stat.delay + 0.2 }}
+                      viewport={{ once: true }}
+                      className="text-4xl font-bold text-gray-800 mb-2"
+                    >
+                      {stat.number}
+                    </motion.div>
+                    <div className="text-gray-600 font-medium">{stat.label}</div>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-16 px-4 md:px-8 bg-white">
+        {/* Enhanced Features Section */}
+        <section className="py-20 px-4 md:px-8 bg-white">
           <div className="container mx-auto max-w-6xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="mb-12 text-center"
+              className="mb-16 text-center"
             >
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Neler Öğreneceksiniz?</h2>
-              <div className="h-1 w-24 bg-[#38B6FF] mx-auto rounded-full"></div>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Neler Öğreneceksiniz?</h2>
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: 96 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="h-1 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] mx-auto rounded-full"
+              />
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
                   title: "Klasik Şifreleme",
-                  description: "Caesar, Vigenère, Substitution gibi klasik şifreleme algoritmalarının çalışma prensiplerini öğrenin.",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-[#38B6FF]">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21a48.308 48.308 0 0 1-8.135-2.687c-1.717-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                    </svg>
-                  )
+                  description: "Caesar, Vigenère, Substitution gibi klasik şifreleme algoritmalarının çalışma prensiplerini interaktif olarak öğrenin.",
+                  icon: Crown,
+                  color: "from-yellow-400 to-orange-500"
                 },
                 {
-                  title: "Şifre Kırma",
-                  description: "Klasik şifrelerin zayıf noktalarını keşfedin ve bu şifrelerin nasıl kırılabileceğini öğrenin.",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-[#38B6FF]">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z" />
-                    </svg>
-                  )
+                  title: "Şifre Kırma Teknikleri",
+                  description: "Klasik şifrelerin zayıf noktalarını keşfedin ve bu şifrelerin nasıl kırılabileceğini pratik örneklerle öğrenin.",
+                  icon: Wrench,
+                  color: "from-red-400 to-pink-500"
                 },
                 {
-                  title: "Tarihsel Bağlam",
-                  description: "Şifreleme algoritmalarının tarih boyunca nasıl kullanıldığını ve gelişimini keşfedin.",
-                  icon: (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-[#38B6FF]">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                    </svg>
-                  )
+                  title: "Tarihsel Perspektif",
+                  description: "Şifreleme algoritmalarının tarih boyunca nasıl kullanıldığını ve gelişimini kronolojik olarak keşfedin.",
+                  icon: History,
+                  color: "from-blue-400 to-indigo-500"
                 }
               ].map((feature, index) => (
                 <motion.div 
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -10,
+                    transition: { duration: 0.3 }
+                  }}
                   onHoverStart={() => setHoveredFeature(index)}
                   onHoverEnd={() => setHoveredFeature(null)}
-                  className="border border-gray-200 rounded-lg transition-all duration-300 hover:shadow-[0_8px_30px_0_rgba(56,182,255,0.15)] hover:border-[#38B6FF]/30 overflow-hidden"
+                  className="group relative border border-gray-200 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:border-[#38B6FF]/30 overflow-hidden bg-white"
                 >
-                  <div className="p-6">
+                  {/* Background effect */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ 
+                      opacity: hoveredFeature === index ? 0.1 : 0,
+                      scale: hoveredFeature === index ? 1 : 0
+                    }}
+                    className={`absolute inset-0 bg-gradient-to-br ${feature.color}`}
+                  />
+                  
+                  <div className="relative z-10 p-8">
                     <motion.div 
                       animate={{ 
                         scale: hoveredFeature === index ? 1.1 : 1,
-                        rotate: hoveredFeature === index ? 5 : 0
+                        rotate: hoveredFeature === index ? 360 : 0
                       }}
-                      transition={{ duration: 0.2 }}
-                      className="bg-[#E8F7FF] w-14 h-14 rounded-full flex items-center justify-center mb-4"
+                      transition={{ duration: 0.3 }}
+                      className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} mb-6`}
                     >
-                      {feature.icon}
+                      <feature.icon className="w-8 h-8 text-white" />
                     </motion.div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-800">{feature.title}</h3>
-                    <p className="text-gray-600">
+                    
+                    <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-[#38B6FF] transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
+                  
+                  {/* Shine effect */}
+                  <motion.div
+                    initial={{ x: "-100%" }}
+                    animate={{ x: hoveredFeature === index ? "100%" : "-100%" }}
+                    transition={{ duration: 0.6 }}
+                    className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                  />
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Learning Path Section */}
-        <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-blue-50 to-white">
-          <div className="container mx-auto max-w-6xl">
+        {/* Enhanced Learning Path Section */}
+        <section className="py-20 px-4 md:px-8 bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-50 relative overflow-hidden">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <Lock className="absolute top-10 left-10 w-16 h-16 text-[#38B6FF]" />
+            <Key className="absolute top-20 right-20 w-12 h-12 text-[#38B6FF]" />
+            <Shield className="absolute bottom-20 left-20 w-14 h-14 text-[#38B6FF]" />
+            <Code2 className="absolute bottom-10 right-10 w-18 h-18 text-[#38B6FF]" />
+          </div>
+          
+          <div className="container mx-auto max-w-6xl relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="text-center mb-12"
+              className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Öğrenme Yolunuz</h2>
-              <div className="h-1 w-24 bg-[#38B6FF] mx-auto rounded-full"></div>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Öğrenme Yolculuğunuz</h2>
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: 96 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="h-1 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] mx-auto rounded-full"
+              />
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
-                { step: "1", title: "Klasik Şifreler", description: "Caesar ve Atbaş ile başlayın", color: "bg-green-500" },
-                { step: "2", title: "Polialfabetik", description: "Vigenère ve Beaufort öğrenin", color: "bg-blue-500" },
-                { step: "3", title: "Transpozisyon", description: "Rail Fence ve Columnar deneyin", color: "bg-yellow-500" },
-                { step: "4", title: "Modern Şifreler", description: "AES ve RSA ile tamamlayın", color: "bg-red-500" }
+                { 
+                  step: "1", 
+                  title: "Temel Şifreler", 
+                  description: "Caesar ve Atbaş ile şifreleme dünyasına adım atın", 
+                  icon: CheckCircle,
+                  color: "from-green-400 to-green-600",
+                  bgColor: "bg-green-500"
+                },
+                { 
+                  step: "2", 
+                  title: "Polialfabetik", 
+                  description: "Vigenère ve Beaufort ile karmaşık şifreleri öğrenin", 
+                  icon: TrendingUp,
+                  color: "from-blue-400 to-blue-600",
+                  bgColor: "bg-blue-500"
+                },
+                { 
+                  step: "3", 
+                  title: "Transpozisyon", 
+                  description: "Rail Fence ve Columnar ile harfleri yeniden düzenleyin", 
+                  icon: Star,
+                  color: "from-yellow-400 to-yellow-600",
+                  bgColor: "bg-yellow-500"
+                },
+                { 
+                  step: "4", 
+                  title: "Modern Şifreler", 
+                  description: "AES ve RSA ile günümüz kriptografisini keşfedin", 
+                  icon: Trophy,
+                  color: "from-purple-400 to-purple-600",
+                  bgColor: "bg-purple-500"
+                }
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="relative"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -10,
+                    transition: { duration: 0.3 }
+                  }}
+                  className="relative group"
                 >
-                  <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-                    <div className={`w-12 h-12 ${item.color} text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto`}>
-                      {item.step}
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2 text-gray-800">{item.title}</h3>
-                    <p className="text-gray-600 text-sm">{item.description}</p>
+                  <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/50 text-center hover:bg-white/90 transition-all duration-300 h-full">
+                    <motion.div 
+                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                      className={`w-16 h-16 ${item.bgColor} text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 mx-auto relative overflow-hidden`}
+                    >
+                      <span className="relative z-10">{item.step}</span>
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        whileHover={{ scale: 1 }}
+                        className="absolute inset-0 bg-white/20"
+                      />
+                    </motion.div>
+                    
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} mb-4`}
+                    >
+                      <item.icon className="w-6 h-6 text-white" />
+                    </motion.div>
+                    
+                    <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-[#38B6FF] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                   </div>
+                  
+                  {/* Connection line */}
                   {index < 3 && (
-                    <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gray-300"></div>
+                    <motion.div 
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] origin-left"
+                    />
                   )}
                 </motion.div>
               ))}
@@ -303,18 +630,24 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Algorithms Preview */}
-        <section className="py-16 px-4 md:px-8 bg-gray-50">
+        {/* Enhanced Algorithms Preview */}
+        <section className="py-20 px-4 md:px-8 bg-gray-50">
           <div className="container mx-auto max-w-6xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="mb-12 text-center"
+              className="mb-16 text-center"
             >
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Popüler Algoritmalar</h2>
-              <div className="h-1 w-24 bg-[#38B6FF] mx-auto rounded-full"></div>
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">Popüler Algoritmalar</h2>
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: 96 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="h-1 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] mx-auto rounded-full"
+              />
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -323,38 +656,66 @@ export default function Home() {
                   title: "Caesar Şifresi",
                   description: "Alfabedeki harflerin belirli bir sayıda kaydırılmasına dayanan en temel şifreleme yöntemi.",
                   link: "/algoritmalar/caesar",
-                  icon: "🏛️",
-                  difficulty: "Kolay"
+                  icon: Crown,
+                  difficulty: "Kolay",
+                  color: "from-green-400 to-green-600"
                 },
                 {
                   title: "Vigenère Şifresi", 
                   description: "Bir anahtar kelime kullanarak harflerin farklı miktarlarda kaydırılmasına dayanan polialfabetik şifreleme.",
                   link: "/algoritmalar/vigenere",
-                  icon: "🗝️",
-                  difficulty: "Orta"
+                  icon: Key,
+                  difficulty: "Orta",
+                  color: "from-blue-400 to-blue-600"
                 },
                 {
                   title: "Playfair Şifresi",
                   description: "Harfleri ikişerli gruplar halinde şifreleyen, matris üzerine kurulu bir şifreleme sistemi.",
                   link: "/algoritmalar/playfair",
-                  icon: "📋",
-                  difficulty: "Zor"
+                  icon: Brain,
+                  difficulty: "Zor",
+                  color: "from-purple-400 to-purple-600"
                 }
               ].map((algorithm, index) => (
                 <Link key={index} href={algorithm.link} className="group">
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    whileHover={{ scale: 1.02 }}
-                    className="border border-gray-200 h-full rounded-xl transition-all duration-300 group-hover:shadow-[0_8px_30px_0_rgba(56,182,255,0.15)] group-hover:border-[#38B6FF]/30 overflow-hidden bg-white"
+                    whileHover={{ 
+                      scale: 1.02, 
+                      y: -10,
+                      transition: { duration: 0.3 }
+                    }}
+                    onHoverStart={() => setHoveredAlgorithm(index)}
+                    onHoverEnd={() => setHoveredAlgorithm(null)}
+                    className="relative border border-gray-200 h-full rounded-2xl transition-all duration-300 group-hover:shadow-2xl group-hover:border-[#38B6FF]/30 overflow-hidden bg-white"
                   >
-                    <div className="h-2 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] rounded-t-xl"></div>
-                    <div className="p-6 flex flex-col h-full">
-                      <div className="flex items-center mb-3">
-                        <span className="text-2xl mr-3">{algorithm.icon}</span>
-                        <span className={`text-xs px-2 py-1 rounded-full font-medium ${
+                    {/* Gradient top border */}
+                    <div className={`h-2 bg-gradient-to-r ${algorithm.color} rounded-t-2xl`}></div>
+                    
+                    {/* Background effect */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ 
+                        opacity: hoveredAlgorithm === index ? 0.1 : 0,
+                        scale: hoveredAlgorithm === index ? 1 : 0
+                      }}
+                      className={`absolute inset-0 bg-gradient-to-br ${algorithm.color}`}
+                    />
+                    
+                    <div className="relative z-10 p-8 flex flex-col h-full">
+                      <div className="flex items-center justify-between mb-4">
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                          className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${algorithm.color}`}
+                        >
+                          <algorithm.icon className="w-6 h-6 text-white" />
+                        </motion.div>
+                        
+                        <span className={`text-xs px-3 py-1 rounded-full font-semibold ${
                           algorithm.difficulty === "Kolay" 
                             ? "bg-green-100 text-green-800"
                             : algorithm.difficulty === "Orta"
@@ -364,53 +725,60 @@ export default function Home() {
                           {algorithm.difficulty}
                         </span>
                       </div>
-                      <h3 className="text-xl font-semibold mb-3 text-gray-800 group-hover:text-[#38B6FF] transition-colors">
+                      
+                      <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-[#38B6FF] transition-colors">
                         {algorithm.title}
                       </h3>
-                      <p className="text-gray-600 mb-4 flex-grow">
+                      <p className="text-gray-600 mb-6 flex-grow leading-relaxed">
                         {algorithm.description}
                       </p>
-                      <span className="inline-flex items-center text-sm font-medium text-[#38B6FF]">
-                        Keşfet
-                        <motion.svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          fill="none" 
-                          viewBox="0 0 24 24" 
-                          strokeWidth={1.5} 
-                          stroke="currentColor" 
-                          className="w-5 h-5 ml-1"
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ 
-                            duration: 1.5, 
-                            repeat: Infinity, 
-                            repeatType: "loop",
-                            ease: "easeInOut",
-                            repeatDelay: 2
-                          }}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                        </motion.svg>
-                      </span>
+                      
+                      <motion.div 
+                        whileHover={{ x: 5 }}
+                        className="inline-flex items-center text-sm font-semibold text-[#38B6FF] mt-auto"
+                      >
+                        <Rocket className="w-4 h-4 mr-2" />
+                        Keşfetmeye Başla
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </motion.div>
                     </div>
+                    
+                    {/* Shine effect */}
+                    <motion.div
+                      initial={{ x: "-100%" }}
+                      animate={{ x: hoveredAlgorithm === index ? "100%" : "-100%" }}
+                      transition={{ duration: 0.6 }}
+                      className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    />
                   </motion.div>
                 </Link>
               ))}
             </div>
             
-            <div className="text-center mt-12">
-              <Link 
-                href="/algoritmalar" 
-                className="relative inline-flex group"
-              >
-                <div className="absolute inset-0 bg-[#38B6FF]/20 blur-lg rounded-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                <div className="relative bg-[#38B6FF] text-white px-8 py-4 rounded-lg font-medium hover:bg-[#0098F7] transition-colors inline-flex items-center">
-                  Tüm Algoritmaları Gör
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                  </svg>
-                </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-center mt-12"
+            >
+              <Link href="/algoritmalar" className="group relative">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] text-white px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 inline-flex items-center"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  Tüm Algoritmaları Keşfet
+                  <motion.div
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </motion.div>
+                </motion.div>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </section>
 

@@ -7,7 +7,40 @@ import PageTransition from "@/components/ui/page-transition";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
 import { useAuth } from "@/contexts/AuthContext";
-import { Lock } from "lucide-react";
+import { 
+  Lock, 
+  Shield, 
+  Key, 
+  RotateCcw, 
+  Zap, 
+  Hash, 
+  TrendingUp, 
+  Target, 
+  Code2, 
+  Database, 
+  Sparkles, 
+  Layers,
+  Binary,
+  Network,
+  Eye,
+  Radio,
+  HardDrive,
+  Pyramid,
+  Grid3x3,
+  Square,
+  Calculator,
+  Fingerprint,
+  Waves,
+  Anchor,
+  Cog,
+  Phone,
+  Grid,
+  FileText,
+  MousePointer2,
+  Star,
+  Crown,
+  Search
+} from "lucide-react";
 
 export default function AlgoritmalarPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -49,7 +82,8 @@ export default function AlgoritmalarPage() {
       category: "klasik",
       slug: "/algoritmalar/caesar",
       tags: ["kaydırma", "basit", "tarihsel"],
-      icon: "🏛️",
+      icon: Crown,
+      color: "from-yellow-400 to-orange-500",
       implemented: true
     },
     {
@@ -61,7 +95,8 @@ export default function AlgoritmalarPage() {
       category: "klasik",
       slug: "/algoritmalar/substitution",
       tags: ["ikame", "alfabe", "monoalfabetik"],
-      icon: "🔤",
+      icon: Grid3x3,
+      color: "from-blue-400 to-indigo-500",
       implemented: true
     },
     {
@@ -73,7 +108,8 @@ export default function AlgoritmalarPage() {
       category: "klasik",
       slug: "/algoritmalar/atbash",
       tags: ["ters", "ibranice", "antik"],
-      icon: "📜",
+      icon: FileText,
+      color: "from-green-400 to-emerald-500",
       implemented: true
     },
     {
@@ -85,7 +121,8 @@ export default function AlgoritmalarPage() {
       category: "klasik",
       slug: "/algoritmalar/affine",
       tags: ["matematik", "formül", "lineer"],
-      icon: "📐",
+      icon: Calculator,
+      color: "from-purple-400 to-pink-500",
       implemented: false
     },
 
@@ -99,7 +136,8 @@ export default function AlgoritmalarPage() {
       category: "polialfabetik",
       slug: "/algoritmalar/vigenere",
       tags: ["anahtar", "polialfabetik", "tekrarlı"],
-      icon: "🗝️",
+      icon: Key,
+      color: "from-cyan-400 to-blue-500",
       implemented: true
     },
     {
@@ -111,7 +149,8 @@ export default function AlgoritmalarPage() {
       category: "polialfabetik",
       slug: "/algoritmalar/beaufort",
       tags: ["vigenere", "simetrik", "naval"],
-      icon: "⚓",
+      icon: Anchor,
+      color: "from-teal-400 to-cyan-500",
       implemented: true
     },
     {
@@ -123,7 +162,8 @@ export default function AlgoritmalarPage() {
       category: "polialfabetik",
       slug: "/algoritmalar/autokey",
       tags: ["otomatik", "anahtar", "gelişmiş"],
-      icon: "🔐",
+      icon: RotateCcw,
+      color: "from-emerald-400 to-teal-500",
       implemented: false
     },
 
@@ -137,7 +177,8 @@ export default function AlgoritmalarPage() {
       category: "transpozisyon",
       slug: "/algoritmalar/transposition",
       tags: ["konum", "sıralama", "matris"],
-      icon: "🔄",
+      icon: Grid,
+      color: "from-orange-400 to-red-500",
       implemented: false
     },
     {
@@ -149,7 +190,8 @@ export default function AlgoritmalarPage() {
       category: "transpozisyon",
       slug: "/algoritmalar/railfence",
       tags: ["zigzag", "çit", "basit"],
-      icon: "🚂",
+      icon: Waves,
+      color: "from-amber-400 to-yellow-500",
       implemented: true
     },
     {
@@ -161,7 +203,8 @@ export default function AlgoritmalarPage() {
       category: "transpozisyon",
       slug: "/algoritmalar/columnar",
       tags: ["tablo", "sütun", "sıralama"],
-      icon: "📊",
+      icon: Layers,
+      color: "from-lime-400 to-green-500",
       implemented: true
     },
 
@@ -175,7 +218,8 @@ export default function AlgoritmalarPage() {
       category: "makine",
       slug: "/algoritmalar/enigma",
       tags: ["rotor", "alman", "savaş"],
-      icon: "⚙️",
+      icon: Cog,
+      color: "from-slate-400 to-gray-600",
       implemented: false
     },
     {
@@ -187,7 +231,8 @@ export default function AlgoritmalarPage() {
       category: "makine",
       slug: "/algoritmalar/lorenz",
       tags: ["teletype", "tunny", "bletchley"],
-      icon: "📞",
+      icon: Phone,
+      color: "from-stone-400 to-slate-500",
       implemented: false
     },
 
@@ -201,7 +246,8 @@ export default function AlgoritmalarPage() {
       category: "klasik",
       slug: "/algoritmalar/playfair",
       tags: ["matris", "ikili", "digraf"],
-      icon: "📋",
+      icon: Square,
+      color: "from-violet-400 to-purple-500",
       implemented: true
     },
     {
@@ -213,7 +259,8 @@ export default function AlgoritmalarPage() {
       category: "klasik",
       slug: "/algoritmalar/foursquare",
       tags: ["dörtlü", "matris", "gelişmiş"],
-      icon: "⬜",
+      icon: Grid,
+      color: "from-fuchsia-400 to-pink-500",
       implemented: false
     },
     {
@@ -225,7 +272,8 @@ export default function AlgoritmalarPage() {
       category: "klasik",
       slug: "/algoritmalar/twosquare",
       tags: ["ikili", "wheatstone", "matris"],
-      icon: "⬛",
+      icon: Binary,
+      color: "from-rose-400 to-red-500",
       implemented: false
     },
 
@@ -239,7 +287,8 @@ export default function AlgoritmalarPage() {
       category: "modern",
       slug: "/algoritmalar/des",
       tags: ["blok", "simetrik", "standard"],
-      icon: "🔒",
+      icon: Lock,
+      color: "from-gray-400 to-slate-500",
       implemented: false
     },
     {
@@ -251,7 +300,8 @@ export default function AlgoritmalarPage() {
       category: "modern",
       slug: "/algoritmalar/aes",
       tags: ["rijndael", "standard", "güvenli"],
-      icon: "🛡️",
+      icon: Shield,
+      color: "from-emerald-500 to-green-600",
       implemented: true
     },
     {
@@ -263,7 +313,8 @@ export default function AlgoritmalarPage() {
       category: "modern",
       slug: "/algoritmalar/blowfish",
       tags: ["schneier", "hızlı", "değişken"],
-      icon: "🐡",
+      icon: Zap,
+      color: "from-blue-500 to-indigo-600",
       implemented: false
     },
 
@@ -277,7 +328,8 @@ export default function AlgoritmalarPage() {
       category: "asimetrik",
       slug: "/algoritmalar/rsa",
       tags: ["açık-anahtar", "faktorizasyon", "dijital-imza"],
-      icon: "🔑",
+      icon: Key,
+      color: "from-amber-500 to-orange-600",
       implemented: true
     },
     {
@@ -289,7 +341,8 @@ export default function AlgoritmalarPage() {
       category: "asimetrik",
       slug: "/algoritmalar/ecc",
       tags: ["eliptik", "eğri", "modern"],
-      icon: "📈",
+      icon: TrendingUp,
+      color: "from-purple-500 to-pink-600",
       implemented: false
     },
     {
@@ -301,7 +354,8 @@ export default function AlgoritmalarPage() {
       category: "asimetrik",
       slug: "/algoritmalar/dh",
       tags: ["anahtar-değişimi", "protokol", "ilk"],
-      icon: "🤝",
+      icon: Network,
+      color: "from-cyan-500 to-blue-600",
       implemented: false
     },
 
@@ -315,7 +369,8 @@ export default function AlgoritmalarPage() {
       category: "hash",
       slug: "/algoritmalar/md5",
       tags: ["128-bit", "hash", "eski"],
-      icon: "🔍",
+      icon: Hash,
+      color: "from-orange-400 to-red-400",
       implemented: false
     },
     {
@@ -327,7 +382,8 @@ export default function AlgoritmalarPage() {
       category: "hash",
       slug: "/algoritmalar/sha1",
       tags: ["160-bit", "kırılmış", "eski"],
-      icon: "⚠️",
+      icon: Eye,
+      color: "from-yellow-400 to-orange-400",
       implemented: false
     },
     {
@@ -339,7 +395,8 @@ export default function AlgoritmalarPage() {
       category: "hash",
       slug: "/algoritmalar/sha256",
       tags: ["256-bit", "güvenli", "bitcoin"],
-      icon: "💎",
+      icon: Sparkles,
+      color: "from-yellow-500 to-amber-600",
       implemented: false
     },
     {
@@ -351,7 +408,8 @@ export default function AlgoritmalarPage() {
       category: "hash",
       slug: "/algoritmalar/bcrypt",
       tags: ["parola", "yavaş", "tuz"],
-      icon: "🔐",
+      icon: Fingerprint,
+      color: "from-green-500 to-emerald-600",
       implemented: false
     },
 
@@ -365,7 +423,8 @@ export default function AlgoritmalarPage() {
       category: "klasik",
       slug: "/algoritmalar/morse",
       tags: ["nokta", "çizgi", "telgraf"],
-      icon: "📡",
+      icon: Radio,
+      color: "from-gray-400 to-slate-500",
       implemented: false
     },
     {
@@ -377,7 +436,8 @@ export default function AlgoritmalarPage() {
       category: "modern",
       slug: "/algoritmalar/base64",
       tags: ["kodlama", "binary", "text"],
-      icon: "💾",
+      icon: HardDrive,
+      color: "from-slate-400 to-gray-500",
       implemented: false
     },
     {
@@ -389,7 +449,8 @@ export default function AlgoritmalarPage() {
       category: "transpozisyon",
       slug: "/algoritmalar/scytale",
       tags: ["sparta", "silindir", "antik"],
-      icon: "📜",
+      icon: Pyramid,
+      color: "from-yellow-400 to-amber-500",
       implemented: false
     }
   ];
@@ -453,43 +514,209 @@ export default function AlgoritmalarPage() {
       <div className="min-h-screen flex flex-col bg-white">
         <Header currentPath="/algoritmalar" />
 
-        {/* Page Header */}
-        <div className="bg-[#38B6FF] text-white py-16 px-4 md:px-8 relative">
+        {/* Enhanced Page Header */}
+        <div className="bg-gradient-to-br from-[#38B6FF] via-[#0EA5E9] to-[#0284C7] text-white py-20 px-4 md:px-8 relative overflow-hidden">
+          {/* Dynamic Background Effects */}
+          <div className="absolute inset-0 z-0">
+            <motion.div 
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ 
+                duration: 25, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"
+            />
+            <motion.div 
+              animate={{ 
+                rotate: -360,
+                scale: [1.1, 1, 1.1]
+              }}
+              transition={{ 
+                duration: 30, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="absolute top-40 right-20 w-48 h-48 bg-white/5 rounded-full blur-2xl"
+            />
+            
+            {/* Floating Crypto Icons */}
+            <motion.div
+              animate={{ 
+                y: [-20, 20, -20],
+                rotate: [0, 180, 360]
+              }}
+              transition={{ 
+                duration: 8, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute top-16 right-1/4 text-white/20"
+            >
+              <Shield className="w-12 h-12" />
+            </motion.div>
+            <motion.div
+              animate={{ 
+                y: [25, -25, 25],
+                x: [-10, 10, -10]
+              }}
+              transition={{ 
+                duration: 6, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute bottom-32 left-1/4 text-white/20"
+            >
+              <Key className="w-10 h-10" />
+            </motion.div>
+            <motion.div
+              animate={{ 
+                y: [-15, 15, -15],
+                rotate: [360, 180, 0]
+              }}
+              transition={{ 
+                duration: 10, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute top-1/2 right-16 text-white/20"
+            >
+              <Code2 className="w-8 h-8" />
+            </motion.div>
+            <motion.div
+              animate={{ 
+                y: [20, -20, 20],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ 
+                duration: 7, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute bottom-20 right-1/3 text-white/20"
+            >
+              <Hash className="w-9 h-9" />
+            </motion.div>
+          </div>
+          
           <div className="container mx-auto max-w-7xl relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                <span className="block">Şifreleme Algoritmaları</span>
-              </h1>
-              <p className="text-lg md:text-xl max-w-4xl text-white mb-8">
-                Antik çağlardan günümüze kadar geliştirilmiş şifreleme yöntemlerini keşfedin. 
-                Klasik şifrelerden modern kriptografi algoritmalarına kadar geniş bir koleksiyon.
-              </p>
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8"
+              >
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                >
+                  <Sparkles className="w-5 h-5 text-yellow-300 mr-3" />
+                </motion.div>
+                <span className="text-white text-sm font-medium">
+                  {algoritmalar.length} Farklı Şifreleme Algoritması
+                </span>
+              </motion.div>
               
-              {/* İstatistikler */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="text-2xl font-bold">{algoritmalar.length}</div>
-                  <div className="text-sm text-white/80">Toplam Algoritma</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="text-2xl font-bold">{updatedCategories.length - 1}</div>
-                  <div className="text-sm text-white/80">Kategori</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="text-2xl font-bold">{algoritmalar.filter(a => a.zorluk === "Kolay").length}</div>
-                  <div className="text-sm text-white/80">Kolay Seviye</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                  <div className="text-2xl font-bold">{algoritmalar.filter(a => a.zorluk === "Çok Zor").length}</div>
-                  <div className="text-sm text-white/80">Çok Zor Seviye</div>
-                </div>
+              <motion.h1 
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-5xl md:text-6xl font-bold mb-6"
+              >
+                <span className="block">Şifreleme</span>
+                <span className="block bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+                  Algoritmaları
+                </span>
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-xl md:text-2xl max-w-4xl text-white/95 mb-12 leading-relaxed"
+              >
+                Antik çağlardan günümüze kadar geliştirilmiş şifreleme yöntemlerini keşfedin. 
+                <strong> Klasik şifrelerden modern kriptografi algoritmalarına</strong> kadar geniş bir koleksiyon.
+              </motion.p>
+              
+              {/* Enhanced Statistics */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {[
+                  { 
+                    value: algoritmalar.length, 
+                    label: "Toplam Algoritma", 
+                    icon: Database,
+                    color: "from-blue-400 to-blue-600"
+                  },
+                  { 
+                    value: updatedCategories.length - 1, 
+                    label: "Kategori", 
+                    icon: Target,
+                    color: "from-green-400 to-green-600"
+                  },
+                  { 
+                    value: algoritmalar.filter(a => a.zorluk === "Kolay").length, 
+                    label: "Kolay Seviye", 
+                    icon: Star,
+                    color: "from-yellow-400 to-yellow-600"
+                  },
+                  { 
+                    value: algoritmalar.filter(a => a.zorluk === "Çok Zor").length, 
+                    label: "Çok Zor Seviye", 
+                    icon: Zap,
+                    color: "from-red-400 to-red-600"
+                  }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -5,
+                      transition: { duration: 0.2 }
+                    }}
+                    className="bg-white/15 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 group"
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 360, scale: 1.2 }}
+                      transition={{ duration: 0.6 }}
+                      className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} mb-4`}
+                    >
+                      <stat.icon className="w-6 h-6 text-white" />
+                    </motion.div>
+                    <motion.div 
+                      initial={{ scale: 1 }}
+                      whileInView={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      className="text-3xl font-bold mb-2"
+                    >
+                      {stat.value}
+                    </motion.div>
+                    <div className="text-sm text-white/80 font-medium">{stat.label}</div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>
+          
+          {/* Scroll indicator */}
+          <motion.div 
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60"
+          >
+            <MousePointer2 className="w-6 h-6" />
+          </motion.div>
         </div>
 
         {/* Filtre ve Arama Bölümü */}
@@ -603,92 +830,136 @@ export default function AlgoritmalarPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {filteredAlgoritmalar.map((algoritma, index) => {
                     const isAccessible = user || freeAlgorithms.includes(algoritma.id);
+                    const IconComponent = algoritma.icon;
                     
                     return (
                       <motion.div
                         key={algoritma.id}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.05 }}
+                        transition={{ duration: 0.6, delay: index * 0.05 }}
+                        whileHover={{ y: -8 }}
                       >
                         {isAccessible && algoritma.implemented ? (
                           <Link href={algoritma.slug} className="group">
-                            <div className="border border-gray-200 h-full rounded-xl transition-all duration-300 group-hover:shadow-[0_8px_30px_0_rgba(56,182,255,0.15)] group-hover:border-[#38B6FF]/30 overflow-hidden bg-white">
-                              <div className="h-2 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] rounded-t-xl"></div>
-                    <div className="p-6 flex flex-col h-full">
-                                <div className="flex items-start justify-between mb-4">
+                            <motion.div 
+                              className="relative border border-gray-200 h-full rounded-2xl transition-all duration-300 group-hover:shadow-2xl group-hover:border-[#38B6FF]/30 overflow-hidden bg-white"
+                              whileHover={{ scale: 1.02 }}
+                            >
+                              {/* Gradient top border */}
+                              <div className={`h-2 bg-gradient-to-r ${algoritma.color} rounded-t-2xl`}></div>
+                              
+                              {/* Background effect */}
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0 }}
+                                whileHover={{ opacity: 0.1, scale: 1 }}
+                                className={`absolute inset-0 bg-gradient-to-br ${algoritma.color}`}
+                              />
+                              
+                              <div className="relative z-10 p-8 flex flex-col h-full">
+                                <div className="flex items-start justify-between mb-6">
                                   <div className="flex items-center">
-                                    <span className="text-2xl mr-3">{algoritma.icon}</span>
-                                    <h3 className="text-xl font-semibold text-gray-800 group-hover:text-[#38B6FF] transition-colors">
-                        {algoritma.name}
-                      </h3>
+                                    <motion.div
+                                      whileHover={{ rotate: 360, scale: 1.1 }}
+                                      transition={{ duration: 0.6 }}
+                                      className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${algoritma.color} mr-4`}
+                                    >
+                                      <IconComponent className="w-7 h-7 text-white" />
+                                    </motion.div>
+                                    <h3 className="text-xl font-bold text-gray-800 group-hover:text-[#38B6FF] transition-colors">
+                                      {algoritma.name}
+                                    </h3>
                                   </div>
                                 </div>
                                 
                                 <p className="text-gray-600 mb-6 flex-grow leading-relaxed">
-                        {algoritma.description}
-                      </p>
-                      
-                                <div className="space-y-3">
+                                  {algoritma.description}
+                                </p>
+                                
+                                <div className="space-y-4">
                                   <div className="flex flex-wrap gap-2">
-                                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${difficultyColors[algoritma.zorluk]}`}>
-                            {algoritma.zorluk}
-                          </span>
-                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
-                            {algoritma.tarih}
-                          </span>
-                        </div>
+                                    <motion.span 
+                                      whileHover={{ scale: 1.05 }}
+                                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${difficultyColors[algoritma.zorluk]}`}
+                                    >
+                                      {algoritma.zorluk}
+                                    </motion.span>
+                                    <motion.span 
+                                      whileHover={{ scale: 1.05 }}
+                                      className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700"
+                                    >
+                                      {algoritma.tarih}
+                                    </motion.span>
+                                  </div>
                                   
                                   <div className="flex flex-wrap gap-1">
                                     {algoritma.tags.slice(0, 3).map(tag => (
-                                      <span key={tag} className="inline-flex items-center px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-700">
+                                      <motion.span 
+                                        key={tag} 
+                                        whileHover={{ scale: 1.05 }}
+                                        className="inline-flex items-center px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
+                                      >
                                         #{tag}
-                                      </span>
+                                      </motion.span>
                                     ))}
                                   </div>
-                      </div>
-                    </div>
-                              
-                              <div className="p-4 bg-gray-50 border-t border-gray-100 group-hover:bg-blue-50 transition-colors">
-                      <span className="inline-flex items-center text-sm font-medium text-[#38B6FF]">
-                        Detayları Görüntüle
-                        <motion.svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          fill="none" 
-                          viewBox="0 0 24 24" 
-                          strokeWidth={1.5} 
-                          stroke="currentColor" 
-                                    className="w-5 h-5 ml-2"
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ 
-                            duration: 1.5, 
-                            repeat: Infinity, 
-                            repeatType: "loop",
-                            ease: "easeInOut",
-                            repeatDelay: 1
-                          }}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                        </motion.svg>
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-                        ) : !isAccessible ? (
-                          /* Premium Algorithm Card */
-                          <div className="border border-orange-200 h-full rounded-xl overflow-hidden bg-gradient-to-br from-orange-50 to-amber-50 relative">
-                            <div className="h-2 bg-gradient-to-r from-orange-400 to-amber-500 rounded-t-xl"></div>
-                            <div className="p-6 flex flex-col h-full relative">
-                              {/* Premium Badge */}
-                              <div className="absolute top-2 right-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center">
-                                <Lock size={12} className="mr-1" />
-                                Premium
+                                </div>
                               </div>
                               
-                              <div className="flex items-start justify-between mb-4">
+                              {/* Shine effect */}
+                              <motion.div
+                                initial={{ x: "-100%" }}
+                                whileHover={{ x: "100%" }}
+                                transition={{ duration: 0.6 }}
+                                className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                              />
+                              
+                              <motion.div 
+                                whileHover={{ backgroundColor: "#F0F8FF" }}
+                                className="p-6 bg-gray-50 border-t border-gray-100 transition-colors"
+                              >
+                                <span className="inline-flex items-center text-sm font-semibold text-[#38B6FF]">
+                                  Detayları Keşfet
+                                  <motion.div
+                                    animate={{ x: [0, 5, 0] }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                    className="ml-2"
+                                  >
+                                    →
+                                  </motion.div>
+                                </span>
+                              </motion.div>
+                            </motion.div>
+                          </Link>
+                        ) : !isAccessible ? (
+                          /* Enhanced Premium Algorithm Card */
+                          <motion.div 
+                            className="border border-orange-200 h-full rounded-2xl overflow-hidden bg-gradient-to-br from-orange-50 to-amber-50 relative"
+                            whileHover={{ scale: 1.02 }}
+                          >
+                            <div className="h-2 bg-gradient-to-r from-orange-400 to-amber-500 rounded-t-2xl"></div>
+                            <div className="p-8 flex flex-col h-full relative">
+                              {/* Premium Badge */}
+                              <motion.div 
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ delay: 0.2, type: "spring" }}
+                                className="absolute top-4 right-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center"
+                              >
+                                <Lock size={12} className="mr-1" />
+                                Premium
+                              </motion.div>
+                              
+                              <div className="flex items-start justify-between mb-6">
                                 <div className="flex items-center">
-                                  <span className="text-2xl mr-3 opacity-60">{algoritma.icon}</span>
-                                  <h3 className="text-xl font-semibold text-gray-700">
+                                  <motion.div
+                                    whileHover={{ rotate: 360 }}
+                                    transition={{ duration: 0.6 }}
+                                    className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-orange-100 mr-4 opacity-60"
+                                  >
+                                    <IconComponent className="w-7 h-7 text-orange-600" />
+                                  </motion.div>
+                                  <h3 className="text-xl font-bold text-gray-700">
                                     {algoritma.name}
                                   </h3>
                                 </div>
@@ -698,12 +969,12 @@ export default function AlgoritmalarPage() {
                                 {algoritma.description}
                               </p>
                               
-                              <div className="space-y-3">
+                              <div className="space-y-4">
                                 <div className="flex flex-wrap gap-2">
-                                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">
                                     {algoritma.zorluk}
                                   </span>
-                                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+                                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">
                                     {algoritma.tarih}
                                   </span>
                                 </div>
@@ -718,27 +989,42 @@ export default function AlgoritmalarPage() {
                               </div>
                             </div>
                             
-                            <Link href="/auth" className="block p-4 bg-gradient-to-r from-orange-100 to-amber-100 border-t border-orange-200 hover:from-orange-200 hover:to-amber-200 transition-colors">
-                              <span className="inline-flex items-center text-sm font-medium text-orange-700 w-full justify-center">
-                                <Lock size={16} className="mr-2" />
-                                Üye Ol ve Erişim Kazan
-                              </span>
+                            <Link href="/auth">
+                              <motion.div 
+                                whileHover={{ backgroundColor: "rgb(254 215 170)" }}
+                                className="p-6 bg-gradient-to-r from-orange-100 to-amber-100 border-t border-orange-200 transition-colors cursor-pointer"
+                              >
+                                <span className="inline-flex items-center text-sm font-semibold text-orange-700 w-full justify-center">
+                                  <Lock size={16} className="mr-2" />
+                                  Üye Ol ve Erişim Kazan
+                                </span>
+                              </motion.div>
                             </Link>
-                          </div>
+                          </motion.div>
                         ) : (
-                          /* Coming Soon Card */
-                          <div className="border border-gray-200 h-full rounded-xl overflow-hidden bg-white opacity-75 cursor-not-allowed">
-                            <div className="h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-t-xl"></div>
-                            <div className="p-6 flex flex-col h-full relative">
-                              {/* Yakında Badge */}
-                              <div className="absolute top-2 right-2 bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-semibold">
+                          /* Enhanced Coming Soon Card */
+                          <motion.div 
+                            className="border border-gray-200 h-full rounded-2xl overflow-hidden bg-white opacity-75 cursor-not-allowed"
+                            whileHover={{ opacity: 0.85 }}
+                          >
+                            <div className="h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-t-2xl"></div>
+                            <div className="p-8 flex flex-col h-full relative">
+                              {/* Coming Soon Badge */}
+                              <motion.div 
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ delay: 0.2, type: "spring" }}
+                                className="absolute top-4 right-4 bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-bold"
+                              >
                                 Yakında
-                              </div>
+                              </motion.div>
                               
-                              <div className="flex items-start justify-between mb-4">
+                              <div className="flex items-start justify-between mb-6">
                                 <div className="flex items-center">
-                                  <span className="text-2xl mr-3 grayscale">{algoritma.icon}</span>
-                                  <h3 className="text-xl font-semibold text-gray-600">
+                                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gray-100 mr-4 grayscale">
+                                    <IconComponent className="w-7 h-7 text-gray-500" />
+                                  </div>
+                                  <h3 className="text-xl font-bold text-gray-600">
                                     {algoritma.name}
                                   </h3>
                                 </div>
@@ -748,12 +1034,12 @@ export default function AlgoritmalarPage() {
                                 {algoritma.description}
                               </p>
                               
-                              <div className="space-y-3">
+                              <div className="space-y-4">
                                 <div className="flex flex-wrap gap-2">
-                                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
                                     {algoritma.zorluk}
                                   </span>
-                                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
                                     {algoritma.tarih}
                                   </span>
                                 </div>
@@ -768,15 +1054,19 @@ export default function AlgoritmalarPage() {
                               </div>
                             </div>
                             
-                            <div className="p-4 bg-gray-100 border-t border-gray-200">
-                              <span className="inline-flex items-center text-sm font-medium text-gray-500">
+                            <div className="p-6 bg-gray-100 border-t border-gray-200">
+                              <span className="inline-flex items-center text-sm font-semibold text-gray-500">
+                                <motion.div
+                                  animate={{ rotate: 360 }}
+                                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                  className="mr-2"
+                                >
+                                  ⚙️
+                                </motion.div>
                                 Geliştiriliyor...
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-2">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
                               </span>
                             </div>
-                          </div>
+                          </motion.div>
                         )}
                       </motion.div>
                     );
@@ -784,11 +1074,41 @@ export default function AlgoritmalarPage() {
                 </div>
 
                 {filteredAlgoritmalar.length === 0 && (
-                  <div className="text-center py-12">
-                    <div className="text-6xl mb-4">🔍</div>
-                    <h3 className="text-xl font-semibold text-gray-600 mb-2">Sonuç Bulunamadı</h3>
-                    <p className="text-gray-500">Arama kriterlerinizi değiştirmeyi deneyin.</p>
-                  </div>
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center py-16"
+                  >
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0]
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gray-100 mb-6"
+                    >
+                      <Search className="w-12 h-12 text-gray-400" />
+                    </motion.div>
+                    <h3 className="text-2xl font-bold text-gray-600 mb-3">Sonuç Bulunamadı</h3>
+                    <p className="text-gray-500 mb-6">Arama kriterlerinizi değiştirmeyi deneyin.</p>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => {
+                        setSearchTerm("");
+                        setSelectedCategory("all");
+                        setSelectedDifficulty("all");
+                      }}
+                      className="inline-flex items-center px-6 py-3 bg-[#38B6FF] text-white rounded-lg font-medium hover:bg-[#0EA5E9] transition-colors"
+                    >
+                      Filtreleri Temizle
+                    </motion.button>
+                  </motion.div>
                 )}
               </div>
             </div>
