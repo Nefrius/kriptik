@@ -705,9 +705,9 @@ export default function AlgoritmalarPage() {
                     <div className="text-sm text-white/80 font-medium">{stat.label}</div>
                   </motion.div>
                 ))}
-              </div>
+                </div>
             </motion.div>
-          </div>
+                </div>
           
           {/* Scroll indicator */}
           <motion.div 
@@ -716,7 +716,7 @@ export default function AlgoritmalarPage() {
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60"
           >
             <MousePointer2 className="w-6 h-6" />
-          </motion.div>
+            </motion.div>
         </div>
 
         {/* Filtre ve Arama Bölümü */}
@@ -867,30 +867,30 @@ export default function AlgoritmalarPage() {
                                       <IconComponent className="w-7 h-7 text-white" />
                                     </motion.div>
                                     <h3 className="text-xl font-bold text-gray-800 group-hover:text-[#38B6FF] transition-colors">
-                                      {algoritma.name}
-                                    </h3>
+                        {algoritma.name}
+                      </h3>
                                   </div>
                                 </div>
                                 
                                 <p className="text-gray-600 mb-6 flex-grow leading-relaxed">
-                                  {algoritma.description}
-                                </p>
-                                
+                        {algoritma.description}
+                      </p>
+                      
                                 <div className="space-y-4">
                                   <div className="flex flex-wrap gap-2">
                                     <motion.span 
                                       whileHover={{ scale: 1.05 }}
                                       className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${difficultyColors[algoritma.zorluk]}`}
                                     >
-                                      {algoritma.zorluk}
+                            {algoritma.zorluk}
                                     </motion.span>
                                     <motion.span 
                                       whileHover={{ scale: 1.05 }}
                                       className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700"
                                     >
-                                      {algoritma.tarih}
+                            {algoritma.tarih}
                                     </motion.span>
-                                  </div>
+                        </div>
                                   
                                   <div className="flex flex-wrap gap-1">
                                     {algoritma.tags.slice(0, 3).map(tag => (
@@ -903,8 +903,8 @@ export default function AlgoritmalarPage() {
                                       </motion.span>
                                     ))}
                                   </div>
-                                </div>
-                              </div>
+                      </div>
+                    </div>
                               
                               {/* Shine effect */}
                               <motion.div
@@ -921,16 +921,16 @@ export default function AlgoritmalarPage() {
                                 <span className="inline-flex items-center text-sm font-semibold text-[#38B6FF]">
                                   Detayları Keşfet
                                   <motion.div
-                                    animate={{ x: [0, 5, 0] }}
+                          animate={{ x: [0, 5, 0] }}
                                     transition={{ duration: 1.5, repeat: Infinity }}
                                     className="ml-2"
                                   >
                                     →
                                   </motion.div>
-                                </span>
+                      </span>
                               </motion.div>
                             </motion.div>
-                          </Link>
+                </Link>
                         ) : !isAccessible ? (
                           /* Enhanced Premium Algorithm Card */
                           <motion.div 
@@ -995,9 +995,9 @@ export default function AlgoritmalarPage() {
                                 className="p-6 bg-gradient-to-r from-orange-100 to-amber-100 border-t border-orange-200 transition-colors cursor-pointer"
                               >
                                 <span className="inline-flex items-center text-sm font-semibold text-orange-700 w-full justify-center">
-                                  <Lock size={16} className="mr-2" />
-                                  Üye Ol ve Erişim Kazan
-                                </span>
+                                <Lock size={16} className="mr-2" />
+                                Üye Ol ve Erişim Kazan
+                              </span>
                               </motion.div>
                             </Link>
                           </motion.div>

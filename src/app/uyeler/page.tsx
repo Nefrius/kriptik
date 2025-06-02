@@ -2,30 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  Search, 
-  User, 
-  Users, 
-  MessageCircle, 
-  Heart, 
-  Star, 
-  UserPlus, 
-  UserMinus, 
-  Crown,
-  Shield,
-  Zap,
-  TrendingUp,
-  Activity,
-  Calendar,
-  MapPin,
-  Mail,
-  Award,
-  Database,
-  Filter,
-  Sparkles,
-  UserCheck,
-  Globe
-} from 'lucide-react'
+import { Search, User, Users, MessageCircle, Heart, Star, UserPlus, UserMinus, SortAsc } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { supabase, UserStats } from '@/lib/supabase'
 import PageTransition from '@/components/ui/page-transition'
@@ -212,43 +189,10 @@ export default function UyelerPage() {
 
   const getUserActivityLevel = (user: UserProfile) => {
     const total = user.comment_count + user.like_count + user.favorite_count
-    if (total >= 50) return { 
-      level: 'Çok Aktif', 
-      color: 'text-emerald-700', 
-      bg: 'bg-gradient-to-r from-emerald-100 to-green-100',
-      icon: Crown
-    }
-    if (total >= 20) return { 
-      level: 'Aktif', 
-      color: 'text-blue-700', 
-      bg: 'bg-gradient-to-r from-blue-100 to-cyan-100',
-      icon: Shield
-    }
-    if (total >= 5) return { 
-      level: 'Orta', 
-      color: 'text-amber-700', 
-      bg: 'bg-gradient-to-r from-amber-100 to-yellow-100',
-      icon: Star
-    }
-    return { 
-      level: 'Yeni', 
-      color: 'text-slate-600', 
-      bg: 'bg-gradient-to-r from-slate-100 to-gray-100',
-      icon: User
-    }
-  }
-
-  const getBadgeGradient = (level: string) => {
-    switch (level) {
-      case 'Çok Aktif':
-        return 'from-emerald-500 to-green-600'
-      case 'Aktif':
-        return 'from-blue-500 to-cyan-600'
-      case 'Orta':
-        return 'from-amber-500 to-yellow-600'
-      default:
-        return 'from-slate-500 to-gray-600'
-    }
+    if (total >= 50) return { level: 'Çok Aktif', color: 'text-green-600', bg: 'bg-green-100' }
+    if (total >= 20) return { level: 'Aktif', color: 'text-blue-600', bg: 'bg-blue-100' }
+    if (total >= 5) return { level: 'Orta', color: 'text-yellow-600', bg: 'bg-yellow-100' }
+    return { level: 'Yeni', color: 'text-gray-600', bg: 'bg-gray-100' }
   }
 
   return (
@@ -256,681 +200,267 @@ export default function UyelerPage() {
       <div className="min-h-screen flex flex-col bg-white">
         <Header currentPath="/uyeler" />
 
-        {/* Enhanced Page Header */}
-        <section className="bg-gradient-to-br from-[#38B6FF] via-[#0EA5E9] to-[#0284C7] py-20 px-4 md:px-8 relative overflow-hidden">
-          {/* Dynamic Background Effects */}
-          <div className="absolute inset-0 z-0">
-            <motion.div 
-              animate={{ 
-                rotate: 360,
-                scale: [1, 1.3, 1]
-              }}
-              transition={{ 
-                duration: 30, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
-              className="absolute top-16 left-16 w-40 h-40 bg-white/10 rounded-full blur-xl"
-            />
-            <motion.div 
-              animate={{ 
-                rotate: -360,
-                scale: [1.2, 1, 1.2]
-              }}
-              transition={{ 
-                duration: 25, 
-                repeat: Infinity, 
-                ease: "linear" 
-              }}
-              className="absolute bottom-20 right-20 w-56 h-56 bg-white/5 rounded-full blur-2xl"
-            />
-            
-            {/* Floating Community Icons */}
+        {/* Page Header */}
+        <section className="bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] py-16 px-4 md:px-8">
+          <div className="container mx-auto max-w-6xl">
             <motion.div
-              animate={{ 
-                y: [-25, 25, -25],
-                rotate: [0, 360, 0]
-              }}
-              transition={{ 
-                duration: 12, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="absolute top-20 right-1/4 text-white/20"
-            >
-              <Users className="w-16 h-16" />
-            </motion.div>
-            <motion.div
-              animate={{ 
-                y: [30, -30, 30],
-                x: [-15, 15, -15]
-              }}
-              transition={{ 
-                duration: 8, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="absolute bottom-32 left-1/4 text-white/20"
-            >
-              <UserPlus className="w-12 h-12" />
-            </motion.div>
-            <motion.div
-              animate={{ 
-                y: [-20, 20, -20],
-                scale: [1, 1.3, 1]
-              }}
-              transition={{ 
-                duration: 10, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="absolute top-1/2 right-20 text-white/20"
-            >
-              <Heart className="w-10 h-10" />
-            </motion.div>
-            <motion.div
-              animate={{ 
-                y: [25, -25, 25],
-                rotate: [360, 180, 0]
-              }}
-              transition={{ 
-                duration: 15, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-              className="absolute bottom-28 right-1/3 text-white/20"
-            >
-              <Star className="w-11 h-11" />
-            </motion.div>
-          </div>
-          
-          <div className="container mx-auto max-w-6xl relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               className="text-center text-white"
             >
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8"
-              >
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                >
-                  <Globe className="w-5 h-5 text-cyan-200 mr-3" />
-                </motion.div>
-                <span className="text-white text-sm font-medium">
-                  {users.length} Aktif Kriptografi Meraklısı
-                </span>
-              </motion.div>
-              
-              <motion.h1 
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-5xl md:text-6xl font-bold mb-6"
-              >
-                <span className="block">Kriptik</span>
-                <span className="block bg-gradient-to-r from-white to-cyan-100 bg-clip-text text-transparent">
-                  Topluluğu
-                </span>
-              </motion.h1>
-              
-              <motion.p 
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl md:text-2xl max-w-4xl mx-auto text-white/95 mb-12 leading-relaxed"
-              >
-                Kriptografi tutkunları ile tanışın, <strong>bilgi paylaşın</strong> ve birlikte öğrenin. 
-                Güçlü bir topluluk oluşturalım!
-              </motion.p>
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">Kriptik Topluluğu</h1>
+              <p className="text-white/90 max-w-2xl mx-auto mb-8">
+                Kriptografi meraklısı diğer üyelerle tanışın, profillerini inceleyin ve birlikte öğrenin.
+              </p>
 
-              {/* Enhanced Statistics */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                {[
-                  { 
-                    value: users.length, 
-                    label: "Toplam Üye", 
-                    icon: Users,
-                    color: "from-cyan-400 to-blue-600"
-                  },
-                  { 
-                    value: users.filter(u => {
-                      const total = u.comment_count + u.like_count + u.favorite_count
-                      return total >= 20
-                    }).length, 
-                    label: "Aktif Üye", 
-                    icon: Activity,
-                    color: "from-green-400 to-emerald-600"
-                  },
-                  { 
-                    value: users.reduce((sum, u) => sum + u.follower_count, 0), 
-                    label: "Toplam Bağlantı", 
-                    icon: TrendingUp,
-                    color: "from-purple-400 to-pink-600"
-                  },
-                  { 
-                    value: users.reduce((sum, u) => sum + u.comment_count + u.like_count, 0), 
-                    label: "Toplam Etkileşim", 
-                    icon: Zap,
-                    color: "from-amber-400 to-orange-600"
-                  }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      y: -5,
-                      transition: { duration: 0.2 }
-                    }}
-                    className="bg-white/15 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 group"
-                  >
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.2 }}
-                      transition={{ duration: 0.6 }}
-                      className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} mb-4`}
-                    >
-                      <stat.icon className="w-6 h-6 text-white" />
-                    </motion.div>
-                    <motion.div 
-                      initial={{ scale: 1 }}
-                      whileInView={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
-                      className="text-3xl font-bold mb-2"
-                    >
-                      {stat.value}
-                    </motion.div>
-                    <div className="text-sm text-white/80 font-medium">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Enhanced Search Bar */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
-                className="max-w-md mx-auto"
-              >
-                <div className="relative group">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="relative"
-                  >
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/60 group-hover:text-white/80 transition-colors" size={20} />
-                    <input
-                      type="text"
-                      placeholder="Üye ara... (kullanıcı adı, ad soyad)"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 focus:bg-white/15 transition-all duration-300"
-                    />
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: searchTerm ? 1 : 0 }}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2"
-                    >
-                      <button
-                        onClick={() => setSearchTerm('')}
-                        className="p-1 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
-                      >
-                        <span className="text-white text-sm">✕</span>
-                      </button>
-                    </motion.div>
-                  </motion.div>
-                  
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+              {/* Search Bar */}
+              <div className="max-w-md mx-auto">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/60" size={20} />
+                  <input
+                    type="text"
+                    placeholder="Üye ara... (kullanıcı adı, ad soyad)"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                  />
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Enhanced Controls */}
-        <section className="py-8 px-4 md:px-8 bg-gradient-to-r from-gray-50 to-blue-50 border-b">
+        {/* Controls */}
+        <section className="py-6 px-4 md:px-8 bg-gray-50 border-b">
           <div className="container mx-auto max-w-6xl">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               
-              {/* Enhanced Stats */}
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex items-center gap-4"
-              >
-                <div className="flex items-center gap-2 bg-white rounded-lg px-4 py-2 shadow-sm">
-                  <Database className="w-4 h-4 text-[#38B6FF]" />
-                  <span className="text-sm text-gray-600">
-                    <span className="font-bold text-[#38B6FF]">{filteredUsers.length}</span> üye bulundu
-                  </span>
-                </div>
+              {/* Stats */}
+              <div className="text-sm text-gray-600">
+                <span className="font-medium">{filteredUsers.length}</span> üye bulundu
                 {searchTerm && (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="flex items-center gap-2 bg-blue-100 rounded-lg px-3 py-2"
-                  >
-                    <Search className="w-4 h-4 text-blue-600" />
-                    <span className="text-sm text-blue-700">&quot;{searchTerm}&quot;</span>
-                  </motion.div>
+                  <span> &quot;{searchTerm}&quot; araması için</span>
                 )}
-              </motion.div>
+              </div>
 
-              {/* Enhanced Sort Controls */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex items-center gap-4"
-              >
-                <div className="flex items-center gap-3 bg-white rounded-lg px-4 py-2 shadow-sm">
-                  <Filter className="w-4 h-4 text-gray-500" />
-                  <span className="text-sm text-gray-600 font-medium">Sırala:</span>
+              {/* Sort Controls */}
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <SortAsc size={16} className="text-gray-500" />
+                  <span className="text-sm text-gray-600">Sırala:</span>
                 </div>
-                <motion.select
-                  whileHover={{ scale: 1.02 }}
+                <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest' | 'most_active' | 'alphabetical')}
-                  className="px-4 py-3 border border-gray-300 rounded-xl text-sm bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#38B6FF] focus:border-[#38B6FF] transition-all duration-200"
+                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#38B6FF] focus:border-transparent"
                 >
-                  <option value="newest">🆕 En Yeni Üyeler</option>
-                  <option value="oldest">👴 En Eski Üyeler</option>
-                  <option value="most_active">⚡ En Aktif Üyeler</option>
-                  <option value="alphabetical">🔤 Alfabetik Sıralama</option>
-                </motion.select>
-              </motion.div>
+                  <option value="newest">En Yeni Üyeler</option>
+                  <option value="oldest">En Eski Üyeler</option>
+                  <option value="most_active">En Aktif Üyeler</option>
+                  <option value="alphabetical">Alfabetik Sıralama</option>
+                </select>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Enhanced Users Grid */}
-        <section className="flex-grow py-12 px-4 md:px-8 bg-gradient-to-b from-white to-gray-50">
+        {/* Users Grid */}
+        <section className="flex-grow py-12 px-4 md:px-8">
           <div className="container mx-auto max-w-6xl">
             {loading ? (
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-center py-16"
-              >
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                  className="w-16 h-16 border-4 border-[#38B6FF] border-t-transparent rounded-full mx-auto mb-6"
-                />
-                <motion.div
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <h3 className="text-xl font-semibold text-gray-700 mb-2">Topluluk Yükleniyor...</h3>
-                  <p className="text-gray-500">Harika üyelerimizi getiriyoruz</p>
-                </motion.div>
-              </motion.div>
+              <div className="text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#38B6FF] mx-auto mb-4"></div>
+                <p className="text-gray-600">Üyeler yükleniyor...</p>
+              </div>
             ) : filteredUsers.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredUsers.map((userProfile, index) => {
                   const activityLevel = getUserActivityLevel(userProfile)
                   const isFollowing = followingMap.get(userProfile.id)
                   const isOwnProfile = user?.id === userProfile.id
-                  const ActivityIcon = activityLevel.icon
 
                   return (
                     <motion.div
                       key={userProfile.id}
-                      initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      whileHover={{ 
-                        y: -8, 
-                        scale: 1.02,
-                        transition: { duration: 0.2 }
-                      }}
-                      className="group"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 }}
+                      className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                     >
-                      <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative">
-                        {/* Card Background Gradient */}
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          whileHover={{ opacity: 0.05 }}
-                          className={`absolute inset-0 bg-gradient-to-br ${getBadgeGradient(activityLevel.level)}`}
-                        />
-                        
-                        {/* Animated border */}
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#38B6FF]/20 via-transparent to-[#38B6FF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                        {/* Card Header */}
-                        <div className="relative z-10 p-8 text-center">
-                          {/* Enhanced Avatar */}
-                          <div className="relative mx-auto mb-6">
-                            <motion.div
-                              whileHover={{ scale: 1.1, rotate: 5 }}
-                              transition={{ duration: 0.3 }}
-                              className="relative"
-                            >
-                              {userProfile.avatar_url ? (
-                                <img
-                                  src={userProfile.avatar_url}
-                                  alt={userProfile.username}
-                                  className="w-20 h-20 rounded-full mx-auto border-4 border-white shadow-lg"
-                                />
-                              ) : (
-                                <div className="w-20 h-20 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full flex items-center justify-center mx-auto border-4 border-white shadow-lg">
-                                  <User size={28} className="text-gray-600" />
-                                </div>
-                              )}
-                              
-                              {/* Glow effect */}
-                              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#38B6FF]/30 to-cyan-400/30 blur opacity-0 group-hover:opacity-60 transition-opacity duration-300 -z-10" />
-                            </motion.div>
-                            
-                            {/* Enhanced Activity Badge */}
-                            <motion.div 
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              transition={{ delay: 0.2, type: "spring" }}
-                              whileHover={{ scale: 1.1 }}
-                              className={`absolute -bottom-2 -right-2 ${activityLevel.bg} rounded-full p-2 shadow-lg border-2 border-white`}
-                            >
-                              <ActivityIcon className={`w-4 h-4 ${activityLevel.color}`} />
-                            </motion.div>
-                          </div>
-
-                          {/* Enhanced User Info */}
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                          >
-                            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#38B6FF] transition-colors">
-                              {userProfile.full_name || userProfile.username}
-                            </h3>
-                            <p className="text-sm text-gray-500 mb-3 flex items-center justify-center gap-1">
-                              <Mail className="w-3 h-3" />
-                              @{userProfile.username}
-                            </p>
-                          </motion.div>
-                          
-                          {/* Activity Level Badge */}
-                          <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-4 ${activityLevel.bg} ${activityLevel.color}`}
-                          >
-                            <ActivityIcon className="w-3 h-3" />
-                            {activityLevel.level}
-                          </motion.div>
-                          
-                          {userProfile.bio && (
-                            <motion.p 
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.4 }}
-                              className="text-sm text-gray-600 mb-4 line-clamp-2 leading-relaxed"
-                            >
-                              {userProfile.bio}
-                            </motion.p>
-                          )}
-
-                          {userProfile.location && (
-                            <motion.p 
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.5 }}
-                              className="text-xs text-gray-500 mb-4 flex items-center justify-center gap-1"
-                            >
-                              <MapPin className="w-3 h-3" />
-                              {userProfile.location}
-                            </motion.p>
-                          )}
-
-                          {/* Enhanced Action Button */}
-                          {!isOwnProfile && user && (
-                            <motion.button
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              onClick={() => toggleFollow(userProfile.id)}
-                              className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all duration-300 font-medium shadow-md ${
-                                isFollowing
-                                  ? 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 hover:from-gray-200 hover:to-gray-300'
-                                  : 'bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] text-white hover:from-[#0EA5E9] hover:to-[#0284C7] shadow-blue-200'
-                              }`}
-                            >
-                              {isFollowing ? (
-                                <>
-                                  <UserMinus size={16} />
-                                  Takibi Bırak
-                                </>
-                              ) : (
-                                <>
-                                  <UserPlus size={16} />
-                                  Takip Et
-                                </>
-                              )}
-                            </motion.button>
-                          )}
-
-                          {isOwnProfile && (
-                            <Link href="/profil">
-                              <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-700 rounded-xl hover:from-emerald-200 hover:to-green-200 transition-all duration-300 font-medium shadow-md"
-                              >
-                                <UserCheck size={16} />
-                                Profilim
-                              </motion.div>
-                            </Link>
-                          )}
-
-                          {!user && (
-                            <Link href="/auth">
-                              <motion.div
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 rounded-xl hover:from-amber-200 hover:to-yellow-200 transition-all duration-300 font-medium shadow-md"
-                              >
-                                <User size={16} />
-                                Giriş Yapın
-                              </motion.div>
-                            </Link>
-                          )}
-                        </div>
-
-                        {/* Enhanced Stats */}
-                        <div className="relative z-10 px-8 pb-6">
-                          <div className="grid grid-cols-4 gap-3 text-center">
-                            {[
-                              { icon: MessageCircle, value: userProfile.comment_count, label: 'Yorum', color: 'text-blue-500' },
-                              { icon: Heart, value: userProfile.like_count, label: 'Beğeni', color: 'text-red-500' },
-                              { icon: Star, value: userProfile.favorite_count, label: 'Favori', color: 'text-yellow-500' },
-                              { icon: Users, value: userProfile.follower_count, label: 'Takipçi', color: 'text-green-500' }
-                            ].map((stat, statIndex) => (
-                              <motion.div
-                                key={statIndex}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.6 + statIndex * 0.1 }}
-                                whileHover={{ scale: 1.1, y: -2 }}
-                                className="bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-all duration-200 group/stat"
-                              >
-                                <div className="flex items-center justify-center mb-2">
-                                  <motion.div
-                                    whileHover={{ rotate: 360 }}
-                                    transition={{ duration: 0.5 }}
-                                  >
-                                    <stat.icon size={16} className={`${stat.color} group-hover/stat:scale-110 transition-transform`} />
-                                  </motion.div>
-                                </div>
-                                <div className="text-sm font-bold text-gray-900">{stat.value}</div>
-                                <div className="text-xs text-gray-500">{stat.label}</div>
-                              </motion.div>
-                            ))}
-                          </div>
-
-                          {/* Join Date */}
-                          <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 1 }}
-                            className="mt-6 pt-4 border-t border-gray-100 text-center"
-                          >
-                            <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
-                              <Calendar className="w-3 h-3" />
-                              {formatDate(userProfile.created_at)} tarihinde katıldı
+                      {/* Card Header */}
+                      <div className="p-6 text-center">
+                        {/* Avatar */}
+                        <div className="relative mx-auto mb-4">
+                          {userProfile.avatar_url ? (
+                            <img
+                              src={userProfile.avatar_url}
+                              alt={userProfile.username}
+                              className="w-16 h-16 rounded-full mx-auto"
+                            />
+                          ) : (
+                            <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto">
+                              <User size={24} className="text-gray-600" />
                             </div>
-                          </motion.div>
+                          )}
+                          
+                          {/* Activity Badge */}
+                          <div className={`absolute -bottom-1 -right-1 px-2 py-1 rounded-full text-xs font-medium ${activityLevel.bg} ${activityLevel.color}`}>
+                            {activityLevel.level}
+                          </div>
                         </div>
 
-                        {/* Shine effect */}
-                        <motion.div
-                          initial={{ x: "-100%" }}
-                          whileHover={{ x: "100%" }}
-                          transition={{ duration: 0.6 }}
-                          className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
-                        />
+                        {/* User Info */}
+                        <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                          {userProfile.full_name || userProfile.username}
+                        </h3>
+                        <p className="text-sm text-gray-500 mb-2">@{userProfile.username}</p>
+                        
+                        {userProfile.bio && (
+                          <p className="text-sm text-gray-600 mb-3 line-clamp-2">{userProfile.bio}</p>
+                        )}
+
+                        {userProfile.location && (
+                          <p className="text-xs text-gray-500 mb-3">📍 {userProfile.location}</p>
+                        )}
+
+                        {/* Follow Button */}
+                        {!isOwnProfile && user && (
+                          <button
+                            onClick={() => toggleFollow(userProfile.id)}
+                            className={`w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                              isFollowing
+                                ? 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                : 'bg-[#38B6FF] text-white hover:bg-[#0098F7]'
+                            }`}
+                          >
+                            {isFollowing ? (
+                              <>
+                                <UserMinus size={16} />
+                                Takibi Bırak
+                              </>
+                            ) : (
+                              <>
+                                <UserPlus size={16} />
+                                Takip Et
+                              </>
+                            )}
+                          </button>
+                        )}
+
+                        {isOwnProfile && (
+                          <Link
+                            href="/profil"
+                            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors"
+                          >
+                            <User size={16} />
+                            Profilim
+                          </Link>
+                        )}
+
+                        {!user && (
+                          <Link
+                            href="/auth"
+                            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                          >
+                            Giriş Yapın
+                          </Link>
+                        )}
+                      </div>
+
+                      {/* Stats */}
+                      <div className="px-6 pb-6">
+                        <div className="grid grid-cols-4 gap-3 text-center">
+                          <div>
+                            <div className="flex items-center justify-center mb-1">
+                              <MessageCircle size={16} className="text-blue-500" />
+                            </div>
+                            <div className="text-sm font-medium text-gray-900">{userProfile.comment_count}</div>
+                            <div className="text-xs text-gray-500">Yorum</div>
+                          </div>
+                          
+                          <div>
+                            <div className="flex items-center justify-center mb-1">
+                              <Heart size={16} className="text-red-500" />
+                            </div>
+                            <div className="text-sm font-medium text-gray-900">{userProfile.like_count}</div>
+                            <div className="text-xs text-gray-500">Beğeni</div>
+                          </div>
+                          
+                          <div>
+                            <div className="flex items-center justify-center mb-1">
+                              <Star size={16} className="text-yellow-500" />
+                            </div>
+                            <div className="text-sm font-medium text-gray-900">{userProfile.favorite_count}</div>
+                            <div className="text-xs text-gray-500">Favori</div>
+                          </div>
+                          
+                          <div>
+                            <div className="flex items-center justify-center mb-1">
+                              <Users size={16} className="text-green-500" />
+                            </div>
+                            <div className="text-sm font-medium text-gray-900">{userProfile.follower_count}</div>
+                            <div className="text-xs text-gray-500">Takipçi</div>
+                          </div>
+                        </div>
+
+                        {/* Join Date */}
+                        <div className="mt-4 pt-4 border-t border-gray-100 text-center">
+                          <p className="text-xs text-gray-500">
+                            {formatDate(userProfile.created_at)} tarihinde katıldı
+                          </p>
+                        </div>
                       </div>
                     </motion.div>
                   )
                 })}
               </div>
             ) : (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center py-16"
-              >
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.1, 1],
-                    rotate: [0, 5, -5, 0]
-                  }}
-                  transition={{ 
-                    duration: 3, 
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 mb-6"
-                >
-                  <Users className="w-12 h-12 text-gray-400" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-gray-600 mb-3">
+              <div className="text-center py-12">
+                <Users size={64} className="text-gray-300 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-600 mb-2">
                   {searchTerm ? 'Aradığınız kriterlere uygun üye bulunamadı' : 'Henüz üye bulunmuyor'}
                 </h3>
-                <p className="text-gray-500 mb-6">
+                <p className="text-gray-500">
                   {searchTerm ? 'Farklı arama terimleri deneyin' : 'İlk üye olmak için kayıt olun!'}
                 </p>
                 {searchTerm && (
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <button
                     onClick={() => setSearchTerm('')}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] text-white rounded-xl hover:from-[#0EA5E9] hover:to-[#0284C7] transition-all duration-300 font-medium shadow-lg"
+                    className="mt-4 px-4 py-2 bg-[#38B6FF] text-white rounded-lg hover:bg-[#0098F7] transition-colors"
                   >
-                    <Search className="w-4 h-4" />
                     Aramayı Temizle
-                  </motion.button>
+                  </button>
                 )}
-              </motion.div>
+              </div>
             )}
           </div>
         </section>
 
-        {/* Enhanced CTA Section */}
+        {/* CTA Section */}
         {!user && (
-          <section className="py-16 px-4 md:px-8 bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 relative overflow-hidden">
-            {/* Background Effects */}
-            <div className="absolute inset-0">
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 180, 360]
-                }}
-                transition={{ 
-                  duration: 20, 
-                  repeat: Infinity, 
-                  ease: "linear" 
-                }}
-                className="absolute top-10 right-10 w-32 h-32 bg-blue-200/30 rounded-full blur-xl"
-              />
-              <motion.div 
-                animate={{ 
-                  scale: [1.1, 1, 1.1],
-                  rotate: [360, 180, 0]
-                }}
-                transition={{ 
-                  duration: 25, 
-                  repeat: Infinity, 
-                  ease: "linear" 
-                }}
-                className="absolute bottom-10 left-10 w-40 h-40 bg-cyan-200/20 rounded-full blur-2xl"
-              />
-            </div>
-            
-            <div className="container mx-auto max-w-4xl text-center relative z-10">
+          <section className="py-12 px-4 md:px-8 bg-gradient-to-r from-blue-50 to-cyan-50">
+            <div className="container mx-auto max-w-4xl text-center">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <motion.div
-                  animate={{ 
-                    y: [-5, 5, -5]
-                  }}
-                  transition={{ 
-                    duration: 4, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
-                  }}
-                  className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#38B6FF] to-[#0EA5E9] mb-8 shadow-xl"
-                >
-                  <UserPlus className="w-10 h-10 text-white" />
-                </motion.div>
-                
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Kriptik Topluluğuna <span className="text-[#38B6FF]">Katılın!</span>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                  Kriptik Topluluğuna Katılın!
                 </h2>
-                <p className="text-gray-600 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                   Diğer kriptografi meraklılarıyla bağlantı kurun, bilgilerinizi paylaşın ve birlikte öğrenin.
-                  <strong> Hesap oluşturmak sadece birkaç dakika sürer.</strong>
+                  Hesap oluşturmak sadece birkaç dakika sürer.
                 </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <Link href="/auth">
-                    <motion.div
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] text-white rounded-xl hover:from-[#0EA5E9] hover:to-[#0284C7] transition-all duration-300 font-semibold shadow-lg hover:shadow-xl"
-                    >
-                      <UserPlus size={20} className="mr-2" />
-                      Hemen Kayıt Ol
-                    </motion.div>
-                  </Link>
-                  
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                    className="flex items-center gap-4 text-sm text-gray-500"
-                  >
-                    <div className="flex items-center gap-1">
-                      <Sparkles className="w-4 h-4 text-yellow-500" />
-                      <span>Ücretsiz</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Award className="w-4 h-4 text-blue-500" />
-                      <span>Hızlı Kayıt</span>
-                    </div>
-                  </motion.div>
-                </div>
+                <Link
+                  href="/auth"
+                  className="inline-flex items-center px-6 py-3 bg-[#38B6FF] text-white rounded-lg hover:bg-[#0098F7] transition-colors font-medium"
+                >
+                  <UserPlus size={20} className="mr-2" />
+                  Hemen Kayıt Ol
+                </Link>
               </motion.div>
             </div>
           </section>

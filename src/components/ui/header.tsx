@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Settings, LogOut, Menu, X, Shield } from "lucide-react";
+import { User, Settings, LogOut, Menu, X, Shield, Brain } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 interface HeaderProps {
@@ -18,6 +19,7 @@ export default function Header({ currentPath }: HeaderProps) {
   const navigation = [
     { name: "Ana Sayfa", href: "/", path: "/" },
     { name: "Algoritmalar", href: "/algoritmalar", path: "/algoritmalar" },
+    { name: "Kriptik AI", href: "/ai-chat", path: "/ai-chat", icon: Brain, requireAuth: true },
     { name: "Yarışma", href: "/yarisma", path: "/yarisma" },
     { name: "Üyeler", href: "/uyeler", path: "/uyeler" },
     { name: "Hakkında", href: "/hakkinda", path: "/hakkinda" },
@@ -34,28 +36,73 @@ export default function Header({ currentPath }: HeaderProps) {
         <div className="flex justify-between items-center h-16">
           
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="flex items-center justify-center w-8 h-8 bg-[#38B6FF] rounded-lg">
-              <Shield className="w-5 h-5 text-white" />
-            </div>
+          <Link href="/" className="flex items-center space-x-3">
+            <motion.div 
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="relative w-10 h-10"
+            >
+              <motion.div
+                animate={{ 
+                  rotate: [0, 360],
+                  opacity: [0.6, 0.8, 0.6]
+                }}
+                transition={{ 
+                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                  opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="absolute inset-0 rounded-full border border-blue-300/50"
+                style={{ margin: "-3px" }}
+              />
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  opacity: [0.5, 0.7, 0.5]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-blue-500/20 rounded-full blur-sm"
+              />
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-indigo-500 shadow-md flex items-center justify-center">
+                <motion.div
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-9 h-9 rounded-full overflow-hidden"
+                >
+                  <Image 
+                    src="/kriptik.png" 
+                    alt="Kriptik Logo" 
+                    width={36} 
+                    height={36}
+                    className="w-full h-full rounded-full object-cover"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
             <span className="text-xl font-bold text-gray-900">Kriptik</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
+            {navigation.map((item) => {
+              if (item.requireAuth && !user) {
+                return null;
+              }
+              
+              return (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-2 ${
                   currentPath === item.path
                     ? "text-[#38B6FF] border-b-2 border-[#38B6FF]"
                     : "text-gray-700 hover:text-[#38B6FF]"
                 }`}
               >
+                  {item.icon && <item.icon className="w-4 h-4" />}
                 {item.name}
               </Link>
-            ))}
+              );
+            })}
           </nav>
 
           {/* Desktop User Menu */}
@@ -152,20 +199,27 @@ export default function Header({ currentPath }: HeaderProps) {
               className="md:hidden border-t border-gray-200 bg-white"
             >
               <div className="py-4 space-y-2">
-                {navigation.map((item) => (
+                {navigation.map((item) => {
+                  if (item.requireAuth && !user) {
+                    return null;
+                  }
+                  
+                  return (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`block px-4 py-2 text-sm font-medium transition-colors ${
+                      className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors ${
                       currentPath === item.path
                         ? "text-[#38B6FF] bg-blue-50"
                         : "text-gray-700 hover:text-[#38B6FF] hover:bg-gray-50"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
+                      {item.icon && <item.icon className="w-4 h-4" />}
                     {item.name}
                   </Link>
-                ))}
+                  );
+                })}
                 
                 <div className="border-t border-gray-200 my-2" />
                 

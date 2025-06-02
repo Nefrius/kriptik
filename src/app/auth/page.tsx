@@ -15,12 +15,14 @@ function AuthContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const error = searchParams.get('error')
+  const tab = searchParams.get('tab')
 
   const [isLogin, setIsLogin] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
+  const [forceShowContent, setForceShowContent] = useState(false)
   
   const [formData, setFormData] = useState({
     email: '',
@@ -29,6 +31,24 @@ function AuthContent() {
     username: '',
     fullName: ''
   })
+
+  // Loading timeout - 3 saniye sonra zorla içeriği göster
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setForceShowContent(true)
+    }, 3000)
+
+    return () => clearTimeout(timeout)
+  }, [])
+
+  // Tab parametresine göre otomatik mod belirleme
+  useEffect(() => {
+    if (tab === 'signup') {
+      setIsLogin(false)
+    } else if (tab === 'signin') {
+      setIsLogin(true)
+    }
+  }, [tab])
 
   useEffect(() => {
     if (user && !loading) {
@@ -124,12 +144,15 @@ function AuthContent() {
     }
   }
 
-  if (loading) {
+  if (loading && !forceShowContent) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#38B6FF] mx-auto mb-4"></div>
           <p className="text-gray-600">Yükleniyor...</p>
+          <p className="text-gray-500 text-sm mt-2">
+            Çok uzun sürüyorsa sayfayı yenileyin
+          </p>
         </div>
       </div>
     )
@@ -431,9 +454,10 @@ function AuthContent() {
             transition={{ duration: 0.6, delay: 1.2 }}
             className="mt-8 bg-white/70 backdrop-blur-sm border border-white/30 rounded-xl p-6 text-center"
           >
-            <h3 className="font-semibold text-gray-800 mb-2">🔒 Güvenli Platform</h3>
+            <h3 className="font-semibold text-gray-800 mb-2">🔒 Demo Modu</h3>
             <p className="text-gray-600 text-sm">
-              Verileriniz şifrelenir ve güvenli Supabase altyapısında saklanır.
+              Bu demo versiyonunda herhangi bir e-posta/şifre ile giriş yapabilirsiniz. 
+              Veriler sadece tarayıcınızda saklanır.
             </p>
           </motion.div>
         </div>

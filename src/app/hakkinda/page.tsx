@@ -478,9 +478,9 @@ export default function AboutPage() {
                             >
                               {tech.icon}
                             </motion.span>
-                            <div className="font-semibold text-gray-800">{tech.name}</div>
-                          </div>
-                          <div className="text-sm text-gray-600">{tech.desc}</div>
+                          <div className="font-semibold text-gray-800">{tech.name}</div>
+                        </div>
+                        <div className="text-sm text-gray-600">{tech.desc}</div>
                         </div>
                       </motion.div>
                     ))}
@@ -522,32 +522,32 @@ export default function AboutPage() {
                     className="h-1 bg-gradient-to-r from-[#38B6FF] to-[#0EA5E9] mx-auto rounded-full"
                   ></motion.div>
                 </motion.div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {[
-                    {
-                      icon: "🎯",
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    icon: "🎯",
                       title: "Pratik Odaklı",
                       description: "Teorik bilgiyi pratik uygulamalarla destekleyerek öğrenme deneyimini zenginleştiriyorum.",
                       color: "from-red-400 to-pink-500"
-                    },
-                    {
-                      icon: "🤝",
+                  },
+                  {
+                    icon: "🤝",
                       title: "Etkileşimli",
                       description: "Kullanıcıların algoritmaları deneyimleyerek öğrenmelerini sağlayan interaktif araçlar.",
                       color: "from-blue-400 to-indigo-500"
-                    },
-                    {
-                      icon: "📈",
+                  },
+                  {
+                    icon: "📈",
                       title: "Kademeli",
                       description: "Basit konseptlerden karmaşık sistemlere doğru yapılandırılmış öğrenme yolu.",
                       color: "from-green-400 to-emerald-500"
-                    }
-                  ].map((approach, index) => (
-                    <motion.div
-                      key={index}
+                  }
+                ].map((approach, index) => (
+                  <motion.div
+                    key={index}
                       initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                       whileHover={{ scale: 1.05, y: -10 }}
@@ -556,7 +556,7 @@ export default function AboutPage() {
                       <motion.div 
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
+                    viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.4 + index * 0.1, type: "spring" }}
                         whileHover={{ rotate: 360 }}
                         className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${approach.color} mb-4 text-2xl`}
@@ -565,8 +565,8 @@ export default function AboutPage() {
                       </motion.div>
                       <h4 className="text-xl font-semibold text-gray-800 mb-3">{approach.title}</h4>
                       <p className="text-gray-600 leading-relaxed">{approach.description}</p>
-                    </motion.div>
-                  ))}
+                  </motion.div>
+                ))}
                 </div>
               </div>
             </motion.div>
